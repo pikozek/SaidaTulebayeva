@@ -1,0 +1,8 @@
+Things that I added: PostgreSQL database. I made 3 tables: Users, Orders, Products
+AOP Advice @Before
+
+Things that I have to add: @Around, @After
+
+Things that I need to fix: if the user already exists in the database don't add them (same for order and product)
+Add findByID and findAll to my repositories now with the database
+Write business methods to my ProductService class
