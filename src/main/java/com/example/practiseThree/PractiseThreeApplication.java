@@ -1,8 +1,12 @@
 package com.example.practiseThree;
 
+import com.example.practiseThree.controller.JsonMessageController;
+import com.example.practiseThree.controller.MessageController;
 import com.example.practiseThree.dto.Order;
 import com.example.practiseThree.dto.Product;
 import com.example.practiseThree.dto.User;
+import com.example.practiseThree.kafka.JsonKafkaConsumer;
+import com.example.practiseThree.kafka.KafkaProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +23,14 @@ public class PractiseThreeApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(PractiseThreeApplication.class, args);
-		AppService appService = context.getBean(AppService.class);
 
+		User user = new User(1, "Pikozek", "1, 2, 3");
+
+		JsonMessageController jsonMessageController = context.getBean(JsonMessageController.class);
+
+		jsonMessageController.publishUser(user);
+
+		//AppService appService = context.getBean(AppService.class);
 	}
 	public static void printUsers(List<User> users){
 		if (!users.isEmpty()) {
